@@ -16,3 +16,8 @@ TypeError: int() argument must be a string, a bytes-like object or a number, not
 
 #2512
 RecursionError가 발생한다. 재귀함수의 깊이가 지나치게 깊어졌을 때 발생하는 에러인데, 지나치게 큰 수를 이중탐색을 하여 발생한 것 같다.
+
+#1477
+TypeError를 고쳤지만 값이 틀렸다. 리스트 내에서 계속 같은 숫자만 더해지는 것이었다. 숫자간의 차이만 더해지던 점을 개선하여 제대로 중간값이 추가되도록 고쳤지만, 출력초과가 된다. 오류도 계속 발생한다..
+
+#3079
