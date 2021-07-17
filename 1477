@@ -1,0 +1,23 @@
+a, b, c = input().split()
+x = [input().split()]
+y = [0, 1000]
+for i in range(len(x)):
+    y.append(x[i])
+sorted(y)
+#0, 82, 201, 411, 555, 622, 755, 1000
+for j in range(b):
+    v = y[1] - y[0]
+    for k in range(1, len(y)-1):
+        w = y[k+1] - y[k]
+        if v < w:
+            v = w
+    y.append(v)
+    y.sort()
+ans = y[k+1] - y[k]    
+for i in range(1, len(y)-1):
+    chal = y[k+1] - y[k]
+    if ans < chal:
+        ans = chal
+print(ans)
+    
+    
