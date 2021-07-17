@@ -1,0 +1,31 @@
+def dual(a, b, m):
+    s = 0
+    c = (a+b)//2
+    for i in x:
+        if i>= c:
+            s += c
+        else: s += i
+    if s > m:
+        if c-a == 1:
+            print(c)
+        else:
+            dual(a, c, m)
+    elif s < m:
+        if b-c == 1:
+            print(c)
+        else:
+            dual(c, b, m)
+    else: 
+        print(c)
+         
+            
+gaesu = int(input())
+numbers = [input().split()]
+for i in range(len(numbers)):
+    numbers[i] = int(numbers[i])
+numbers = sorted(numbers())
+m = int(input())
+
+if sum(numbers) <= m:
+    print(numbers[-1])
+else: dual(numbers[0], numbers[-1], m)
