@@ -1,1 +1,1 @@
-# KOSS_A
+# KOSS_Algorithm
