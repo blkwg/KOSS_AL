@@ -1,0 +1,35 @@
+num = int(input())
+
+
+def vps(ps):
+    length = len(ps)
+    if length % 2 == 1:
+        print("NO")
+    else:
+        PairList = []
+        right_stack = 0
+        control = 0
+        for seperation in range(length):
+            if ps[seperation] == '(':
+                PairList.append(seperation)
+            else:
+                try:
+                    if PairList[right_stack] < seperation:
+                        right_stack += 1
+                    else:
+                        print("NO")
+                        break
+                except:
+                    print("NO")
+                    control = 1
+                    break
+
+        if right_stack != len(PairList):
+            print("NO")
+        elif control != 1:
+            print("YES")
+
+
+for i in range(num):
+    PS = input()
+    vps(PS)
