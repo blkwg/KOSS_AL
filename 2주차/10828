@@ -1,0 +1,57 @@
+import sys
+NumberOfOrder = int(input())
+StackList = []
+length = 0
+app = StackList.append
+pp = StackList.pop
+
+
+def push(n):
+    global StackList
+    global length
+    app(n)
+    length += 1
+
+
+def pop():
+    global StackList
+    global length
+    try:
+        print(StackList[-1])
+        pp()
+        length -= 1
+    except:
+        print(-1)
+
+
+def size():
+    print(length)
+
+
+def empty():
+    if length == 0:
+        print(1)
+    else:
+        print(0)
+
+
+def top():
+    try:
+        print(StackList[-1])
+    except:
+        print(-1)
+
+
+for mission in range(NumberOfOrder):
+    order = sys.stdin.readline().strip()
+    if order == 'pop':
+        pop()
+    elif order == 'size':
+        size()
+    elif order == 'empty':
+        empty()
+    elif order == 'top':
+        top()
+    else:
+        order = order.split()[1]
+        push(order)
