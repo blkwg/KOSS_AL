@@ -1,0 +1,65 @@
+import sys
+time = int(sys.stdin.readline().strip())
+QueueList = []
+length = 0
+app = QueueList.append
+pp = QueueList.pop
+
+
+def push(x):
+    global QueueList
+    global length
+    app(x)
+    length += 1
+
+
+def pop():
+    global QueueList
+    global length
+    try:
+        pp(0)
+        length -= 1
+    except:
+        print(-1)
+
+
+def size():
+    print(length)
+
+
+def empty():
+    if length == 0:
+        print(1)
+    else:
+        print(0)
+
+
+def front():
+    try:
+        print(QueueList[0])
+    except:
+        print(-1)
+
+
+def back():
+    try:
+        print(QueueList[-1])
+    except:
+        print(-1)
+
+
+for order in range(time):
+    data = sys.stdin.readline().strip()
+    if data == 'pop':
+        pop()
+    elif data == 'size':
+        size()
+    elif data == 'empty':
+        empty()
+    elif data == 'front':
+        front()
+    elif data == 'back':
+        back()
+    else:
+        data = data.split()[1]
+        push(data)
