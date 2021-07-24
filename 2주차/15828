@@ -1,0 +1,22 @@
+import sys
+size = int(input())
+
+queue = []
+
+def GetPacket(data):
+    global queue
+    length = len(queue)
+    if data != '0':
+        if length != size:
+            queue.append(data)
+        else:
+            pass
+    else:
+        queue.pop(0)
+        
+packet = sys.stdin.readline().strip()
+while packet != '-1':
+    GetPacket(packet)
+    packet = input()
+for ans in queue:
+    print(ans, end=' ')
