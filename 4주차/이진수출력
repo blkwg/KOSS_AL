@@ -1,0 +1,15 @@
+import sys
+ans = ''
+def de_to_bi(n):
+    global ans
+    ans += str(n%2)
+    n = n//2
+    if n == 0:
+        print(ans[::-1])
+    else:
+        de_to_bi(n)
+
+number = int(sys.stdin.readline())
+
+de_to_bi(number)
+
