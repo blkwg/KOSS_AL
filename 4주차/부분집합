@@ -1,0 +1,21 @@
+import sys
+max_number = int(sys.stdin.readline())
+
+def make_sets(n):
+    if n <= max_number:
+        sets[n] = 0
+        make_sets(n+1)
+        sets[n] = 1
+        make_sets(n+1)
+    else:
+        for i in range(max_number+1):
+            if sets[i] == 1:
+                print(i, end=' ')
+        print('')
+
+
+
+sets = [0]*(max_number+1)
+make_sets(1)
+
+
