@@ -3,24 +3,23 @@ N = int(sys.stdin.readline())
 elements = list(map(int, sys.stdin.readline().split()))
 add = sum(elements)
 
-def make_half(x):
-    check_number = 0
-    for i in range(1, N+1):
-        if check[i] == 1:
-            check_number += i
-    if check_number == wanna_sum:
-        print("YES")
+def make_half(x, y):
+    if x <= N:
+        if y == wanna_sum:
+            print("YES")
+            sys.exit(0)
+        else:
+            make_half(x+1, y + elements[x-1])
+            make_half(x+1, y)
     else:
-        make_half(x+1)
-        check[x] = 1
-        make_half(x+1)
+        print("NO")
+        sys.exit(0)
 
 
 
 wanna_sum = add//2
-check = [0]*(N+1)
-
+check_number = 0
 if add%2 != 1:
-    make_half(1)
+    make_half(1, check_number)
 else:
     print("NO")
