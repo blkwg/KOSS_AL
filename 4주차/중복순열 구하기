@@ -1,0 +1,19 @@
+import sys
+N = list(map(int, sys.stdin.readline().split()))
+
+piList = []
+def ㅠ(now_number, left_repeat):
+    global piList
+    if left_repeat != 0:
+        for i in range(1, N[0]+1):
+            print(i, end=' ')
+            ㅠ(now_number + 1, left_repeat - 1)
+    else:
+        print('')
+
+
+
+
+
+ㅠ(1, N[1])
+print(N[0]**2)
