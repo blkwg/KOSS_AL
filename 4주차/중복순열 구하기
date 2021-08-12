@@ -2,18 +2,21 @@ import sys
 N = list(map(int, sys.stdin.readline().split()))
 
 piList = []
-def ㅠ(now_number, left_repeat):
+element = [0] * N[1]
+def ㅠ(left_repeat):
     global piList
+    global element
     if left_repeat != 0:
         for i in range(1, N[0]+1):
-            print(i, end=' ')
-            ㅠ(now_number + 1, left_repeat - 1)
+            element[N[1]-left_repeat] = i
+            ㅠ(left_repeat - 1)
     else:
-        print('')
+        piList.append(element)
 
 
 
 
 
-ㅠ(1, N[1])
+ㅠ(N[1])
+print(piList)
 print(N[0]**2)
