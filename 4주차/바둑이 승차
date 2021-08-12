@@ -1,0 +1,18 @@
+import sys
+N = list(map(int, sys.stdin.readline().split()))
+badooksWeight = []
+for i in range(N[1]):
+    badooksWeight.append(int(sys.stdin.readline()))
+maxWeight = 0
+def affecient(x, W):
+    global maxWeight
+    if W > maxWeight and N[0] >= W:
+        maxWeight = W
+    if x <= N[1]:
+        affecient(x+1, W + badooksWeight[x-1])
+        affecient(x+1, W)
+    else:
+        print('', end='')
+
+affecient(1, maxWeight)
+print(maxWeight)
