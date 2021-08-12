@@ -1,7 +1,6 @@
 import sys
 N = list(map(int, sys.stdin.readline().split()))
 
-piList = []
 element = [0] * N[1]
 def ㅠ(left_repeat):
     global piList
@@ -11,12 +10,13 @@ def ㅠ(left_repeat):
             element[N[1]-left_repeat] = i
             ㅠ(left_repeat - 1)
     else:
-        piList.append(element)
+        for i in element:
+            print(i, end=' ')
+        print('')
 
 
 
 
 
 ㅠ(N[1])
-print(piList)
 print(N[0]**2)
