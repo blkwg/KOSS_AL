@@ -17,6 +17,7 @@ def factorial(choose, left_chance):
             element_index[i] = 0
         else:
             factorial(choose, left_chance-1)
+        element_index[i] = 0
 
 factorial(N[0], N[1]-1)
 print(case)
