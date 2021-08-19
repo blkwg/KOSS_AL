@@ -8,12 +8,19 @@ def combination(order, left_chance):
         if i not in element:
             element[order] = i
         if left_chance == 1:
-            print(element)
-            C_case.append(element)
+            x = sorted(element)
+            C_case.append(x)
             element[order] = 0
 
         else:
             combination(order + 1, left_chance - 1)
 
 combination(0, N[1])
-print(C_case)
+C = []
+for i in C_case:
+    i.sort()
+    if i not in C and 0 not in i:
+        C.append(i)
+for j in C:
+    print(j)
+print(len(C))
