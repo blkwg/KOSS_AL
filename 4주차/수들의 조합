@@ -1,0 +1,29 @@
+import sys
+N = list(map(int, sys.stdin.readline().split()))
+numbers = list(map(int, sys.stdin.readline().split()))
+M = int(sys.stdin.readline())
+mix_case = []
+element = [0]*N[1]
+def mix(order, left_chance):
+    global element
+    for i in numbers:
+        if i not in element:
+            element[order] = i
+        if left_chance == 1:
+            x = sorted(element)
+            mix_case.append(x)
+            element[order] = 0
+
+        else:
+            mix(order + 1, left_chance - 1)
+
+mix(0, N[1])
+ans = []
+case_counter = 0
+for i in mix_case:
+    if i not in ans and 0 not in i:
+        ans.append(i)
+for j in ans:
+    if sum(j)%M == 0:
+        case_counter += 1
+print(case_counter)
