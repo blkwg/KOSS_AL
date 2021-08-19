@@ -22,5 +22,7 @@ for i in C_case:
     if i not in C and 0 not in i:
         C.append(i)
 for j in C:
-    print(j)
+    for k in j:
+        print(k, end=' ')
+    print(' ')
 print(len(C))
