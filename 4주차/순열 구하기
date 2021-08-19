@@ -1,23 +1,29 @@
 import sys
 N = list(map(int, sys.stdin.readline().split()))
-element_index = [0]*(N[0]+1)
-case = 0
-def factorial(choose, left_chance):
-    global case
-    for i in range(1, choose+1):
-        if element_index[i] == 0:
-            element_index[i] = 1
-        if left_chance == 0:
-            counter = 0
-            for i in element_index:
-                if i == 1:
-                    counter += 1
-            if counter == N[1]:
-                case += 1
-            element_index[i] = 0
-        else:
-            factorial(choose, left_chance-1)
-        element_index[i] = 0
+p_case = []
+element = [0]*N[1]
+def permutation(order, left_chance):
+    global element
+    for i in range(1, N[0]+1):
+        if i not in element:
+            element[order] = i
+        if left_chance == 1:
+            x = []
+            for j in element:
+                x.append(j)
+            p_case.append(x)
+            element[order] = 0
 
-factorial(N[0], N[1]-1)
-print(case)
+        else:
+            permutation(order + 1, left_chance - 1)
+
+permutation(0, N[1])
+p = []
+for i in p_case:
+    if 0 not in i:
+        p.append(i)
+for j in p:
+    for k in j:
+        print(k, end=' ')
+    print(' ')
+print(len(p))
