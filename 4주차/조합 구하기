@@ -1,0 +1,19 @@
+import sys
+N = list(map(int, sys.stdin.readline().split()))
+C_case = []
+element = [0]*N[1]
+def combination(order, left_chance):
+    global element
+    for i in range(1, N[0]+1):
+        if i not in element:
+            element[order] = i
+        if left_chance == 1:
+            print(element)
+            C_case.append(element)
+            element[order] = 0
+
+        else:
+            combination(order + 1, left_chance - 1)
+
+combination(0, N[1])
+print(C_case)
