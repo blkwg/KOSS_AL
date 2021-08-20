@@ -6,36 +6,9 @@ ans = 0
 num_list = []
 def multiply(n, m):
     global ans
-    if n == 1:
-        for i in range(n):
-            ans += pascal[1][i] * m[i]
-    elif n ==2:
-        for i in range(n):
-            ans += pascal[2][i] * m[i]
-    elif n ==3:
-        for i in range(n):
-            ans += pascal[3][i] * m[i]
-    elif n ==4:
-        for i in range(n):
-            ans += pascal[4][i] * m[i]
-    elif n ==5:
-        for i in range(n):
-            ans += pascal[5][i] * m[i]
-    elif n ==6:
-        for i in range(n):
-            ans += pascal[6][i] * m[i]
-    elif n ==7:
-        for i in range(n):
-            ans += pascal[7][i] * m[i]
-    elif n ==8:
-        for i in range(n):
-            ans += pascal[8][i] * m[i]
-    elif n ==9:
-        for i in range(n):
-            ans += pascal[9][i] * m[i]
-    elif n ==10:
-        for i in range(n):
-            ans += pascal[10][i] * m[i]
+    for i in range(n):
+        ans += pascal[n][i] * m[i]
+
 def pick_a_line(left_chance):
     global ans
     if left_chance != 0:
@@ -56,3 +29,6 @@ def pick_a_line(left_chance):
             ans = 0
 
 pick_a_line(N[0])
+
+
+
