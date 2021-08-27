@@ -1,0 +1,71 @@
+import sys
+sys.setrecursionlimit(10**9)
+N = list(map(int, sys.stdin.readline().split()))
+area_list = []
+for i in range(1, N[0] + 1):
+    for j in range(1, N[1] + 1):
+        area_list.append((j, i))
+for i in range(N[2]):
+    rsa = list(map(int, sys.stdin.readline().split()))
+    separating_area = []
+    for j in range(rsa[0] + 1, rsa[2] + 1):
+        for k in range(rsa[1] + 1, rsa[3] + 1):
+            separating_area.append((j, k))
+    for blank in separating_area:
+        if blank in area_list:
+            area_list.remove(blank)
+
+nation = []
+
+def widen_territory(center):
+    global area_list
+
+    if (center[0] + 1, center[1]) in area_list:
+        coordinate = (center[0] + 1, center[1])
+        index_no = area_list.index(coordinate)
+        nation[-1].append(coordinate)
+        area_list.pop(index_no)
+        widen_territory(coordinate)
+
+    if (center[0], center[1] + 1) in area_list:
+        coordinate = (center[0], center[1] + 1)
+        index_no = area_list.index(coordinate)
+        nation[-1].append(coordinate)
+        area_list.pop(index_no)
+        widen_territory(coordinate)
+
+    if (center[0] - 1, center[1]) in area_list:
+        coordinate = (center[0] - 1, center[1])
+        index_no = area_list.index(coordinate)
+        nation[-1].append(coordinate)
+        area_list.pop(index_no)
+        widen_territory(coordinate)
+
+    if (center[0], center[1] - 1) in area_list:
+        coordinate = (center[0], center[1] - 1)
+        index_no = area_list.index(coordinate)
+        nation[-1].append(coordinate)
+        area_list.pop(index_no)
+        widen_territory(coordinate)
+
+
+while len(area_list) != 0:
+    gijun = area_list[-1]
+    nation.append([gijun])
+    area_list.pop()
+    widen_territory(gijun)
+
+
+
+
+print(len(nation))
+nation_area_list = []
+for i in nation:
+    nation_area_list.append(len(i))
+nation_area_list.sort()
+for i in nation_area_list:
+    print(i, end=' ')
+
+
+
+
