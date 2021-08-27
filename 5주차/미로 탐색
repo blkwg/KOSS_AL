@@ -1,0 +1,57 @@
+import sys
+N = list(map(int, sys.stdin.readline().split()))
+raw_labyrinth = []
+labyrinth_info = []
+for i in range(N[0]):
+    raw_labyrinth.append(sys.stdin.readline())
+for i in range(N[0]):
+    for j in range(N[1]):
+        labyrinth_info.append([i+1, j+1, int(raw_labyrinth[i][j])])
+minimum_road = 6000
+visit_record = []
+
+def find_exit(length, coordinate):
+    global minimum_road
+    global visit_record
+
+    if length > minimum_road:
+        pass
+    if coordinate == [N[0], N[1], 1]:
+        if length < minimum_road:
+            minimum_road = length
+
+    else:
+        if minimum_road == len(visit_record):
+            visit_record = visit_record[:length-2]
+
+        if [coordinate[0], coordinate[1] + 1, 1] in labyrinth_info:
+            x = labyrinth_info.index([coordinate[0], coordinate[1] + 1, 1])
+            y = labyrinth_info[x]
+            if y not in visit_record:
+                visit_record.append(y)
+                find_exit(length + 1, y)
+
+        if [coordinate[0] + 1, coordinate[1], 1] in labyrinth_info:
+            x = labyrinth_info.index([coordinate[0] + 1, coordinate[1], 1])
+            y = labyrinth_info[x]
+            if y not in visit_record:
+                visit_record.append(y)
+                find_exit(length + 1, y)
+
+        if [coordinate[0], coordinate[1] - 1, 1] in labyrinth_info:
+            x = labyrinth_info.index([coordinate[0], coordinate[1] - 1, 1])
+            y = labyrinth_info[x]
+            if y not in visit_record:
+                visit_record.append(y)
+                find_exit(length + 1, y)
+
+        if [coordinate[0] - 1, coordinate[1], 1] in labyrinth_info:
+            x = labyrinth_info.index([coordinate[0] - 1, coordinate[1], 1])
+            y = labyrinth_info[x]
+            if y not in visit_record:
+                visit_record.append(y)
+                find_exit(length + 1, y)
+
+
+find_exit(1, labyrinth_info[0])
+print(minimum_road)
