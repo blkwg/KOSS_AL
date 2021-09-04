@@ -1,0 +1,13 @@
+import sys
+tower_no= int(sys.stdin.readline())
+tower_list = list(map(int, sys.stdin.readline().split()))
+get_tower_no_list = [0] * tower_no
+for i in range(tower_no):
+    send_tower = tower_list[tower_no - i - 1]
+    for j in range(tower_no - i - 1):
+        get_tower = tower_list[tower_no - j - 2 - i]
+        if get_tower > send_tower:
+            get_tower_no_list[i] = tower_no - j - 1 - i
+            break
+for ans in get_tower_no_list[::-1]:
+    print(ans, end=' ')
