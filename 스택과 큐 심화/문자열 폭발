@@ -1,21 +1,22 @@
 import sys
-given_list = sys.stdin.readline()
-blast_list = sys.stdin.readline()
-
-gll = len(given_list)
-bll = len(blast_list)
-
-def find_mine(result_list, length):
-    break_check = 0
-    for i in range(length - bll + 1):
-        print(result_list[i:i + bll - 1], blast_list)
-        if blast_list == result_list[i:i + bll - 1]:
-            result_list = result_list[:i] + result_list[i + bll + 1:]
-            break_check = 1
-            break
-    if break_check == 1:
-        find_mine(result_list, len(result_list))
-    else:
-        print(result_list)
-
-find_mine(given_list, gll)
+given_list = sys.stdin.readline().strip()
+#given_list는 스택으로 한 번 더 이용해야 하기 때문에 그대로 받는다.
+blast_array = list(sys.stdin.readline().strip())
+#blast_array는 리스트로 한 글자씩 나뉜 형태를 원하므로 곧바로 list를 씌웠다.- 문자열에 list를 씌우면 한 글자씩 원소로 되어있는 리스트를 얻을 수 있다.
+bll = len(blast_array)
+ans_array = []
+for i in range(len(given_list)):
+    ans_array.append(given_list[i])
+    if ans_array[-1] == blast_array[-1]:
+    #스택의 끝이 blast_array의 마지막 원소와 동일한 경우에 스택을 살펴본다.
+        if ans_array[-bll:] == blast_array:
+        #스택의 마지막 부분에 blast_array가 존재하는 경우
+            for j in range(bll):
+                ans_array.pop()
+                #*정직하게 pop으로 전부 빼내는 것이 blast_array를 제외한 ans_array를 재정의하는 것보다 빠르다.
+if len(ans_array) != 0:
+#"FRULA"를 써야 하는지를 본다.
+    print(''.join(ans_array))
+    #print('mark'.join(lst))로 리스트의 원소를 mark로 이어붙인 str을 얻을 수 있다. 
+else:
+    print("FRULA")
